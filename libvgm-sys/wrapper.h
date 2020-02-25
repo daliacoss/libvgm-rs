@@ -1,6 +1,6 @@
-#include "emu/EmuStructs.h"
-#include "emu/SoundEmu.h"
-#include "emu/Resampler.h"
-#include "emu/SoundDevs.h"
-#include "emu/EmuCores.h"
-#include "emu/cores/sn764intf.h"	// for SN76496_CFG
+#include <vgm/emu/EmuStructs.h>
+#include <vgm/emu/SoundEmu.h>
+#include <vgm/emu/Resampler.h>
+#include <vgm/emu/SoundDevs.h>
+#include <vgm/emu/EmuCores.h>
+#include <vgm/emu/cores/sn764intf.h>// for SN76496_CFG
