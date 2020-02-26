@@ -1,4 +1,5 @@
 use cmake::Config;
+use bindgen::Builder;
 
 use std::env;
 use std::fs;
@@ -31,4 +32,14 @@ fn main() {
 
     println!("cargo:rustc-link-search=native={}", dst.join("lib").display());
     println!("cargo:rustc-link-lib=static=vgm-emu");
+
+    let bindings = Builder::default()
+        .header("wrapper.h")
+        .generate()
+        .expect("Unable to generate bindings");
+
+    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+    bindings
+        .write_to_file(out_path.join("bindings.rs"))
+        .expect("Couldn't write bindings!");
 }
