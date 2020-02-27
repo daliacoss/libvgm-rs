@@ -26,20 +26,27 @@ fn main() {
         .into_string()
         .unwrap()));
 
-    let dst = Config::new(Path::new("libvgm/emu"))
+    let dst = Config::new(Path::new("libvgm"))
         .cflag(include_root)
+        .define("BUILD_LIBAUDIO", "ON")
+        .define("BUILD_LIBPLAYER", "ON")
+        .define("BUILD_TESTS", "OFF")
+        .define("BUILD_PLAYER", "OFF")
         .build();
 
     println!("cargo:rustc-link-search=native={}", dst.join("lib").display());
+
     println!("cargo:rustc-link-lib=static=vgm-emu");
+    println!("cargo:rustc-link-lib=static=vgm-utils");
 
     let bindings = Builder::default()
         .header("wrapper.h")
+        .derive_default(true)
         .generate()
         .expect("Unable to generate bindings");
 
     let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
     bindings
         .write_to_file(out_path.join("bindings.rs"))
-        .expect("Couldn't write bindings!");
+        .expect("Couldn't write bindings to file!");
 }
