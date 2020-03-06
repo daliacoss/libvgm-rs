@@ -7,7 +7,6 @@ include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::default;
     #[test]
     fn test_it_works() {
         let dev_cfg = DEV_GEN_CFG {
@@ -22,6 +21,6 @@ mod tests {
     #[test]
     fn test_loader () {
         //PlayerBase* player;
-        let loader: DATA_LOADER = Default::default();
+        let _loader: DATA_LOADER = Default::default();
     }
 }

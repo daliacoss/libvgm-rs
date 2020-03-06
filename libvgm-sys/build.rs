@@ -28,8 +28,8 @@ fn main() {
 
     let dst = Config::new(Path::new("libvgm"))
         .cflag(include_root)
-        .define("BUILD_LIBAUDIO", "ON")
-        .define("BUILD_LIBPLAYER", "ON")
+        .define("BUILD_LIBAUDIO", "OFF")
+        .define("BUILD_LIBPLAYER", "OFF")
         .define("BUILD_TESTS", "OFF")
         .define("BUILD_PLAYER", "OFF")
         .build();
@@ -38,9 +38,11 @@ fn main() {
 
     println!("cargo:rustc-link-lib=static=vgm-emu");
     println!("cargo:rustc-link-lib=static=vgm-utils");
+    println!("cargo:rustc-link-lib=vgm-player");
 
     let bindings = Builder::default()
         .header("wrapper.h")
+        //.clang_args(&["-x", "c++"])
         .derive_default(true)
         .generate()
         .expect("Unable to generate bindings");
