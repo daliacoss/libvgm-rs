@@ -1,3 +1,3 @@
-[submodule "libvgm-sys/libvgm"]
-	path = libvgm-sys/libvgm
+[submodule "vgm-emu-sys/libvgm"]
+	path = vgm-emu-sys/libvgm
 	url = https://github.com/ValleyBell/libvgm

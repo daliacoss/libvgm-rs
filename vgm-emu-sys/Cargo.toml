@@ -1,11 +1,9 @@
 [package]
-name = "vgm-rs"
+name = "vgm-emu-sys"
 version = "0.1.0"
 authors = ["Dalia Coss <dc@dalia.cc>", "William D. Jones <thor0505@comcast.net>"]
 edition = "2018"
 
-[dependencies.vgm-emu-sys]
-version = "0.1.0"
-path = "./vgm-emu-sys"
-
-[workspace]
+[build-dependencies]
+cmake = "0.1"
+bindgen = "0.53.1"
